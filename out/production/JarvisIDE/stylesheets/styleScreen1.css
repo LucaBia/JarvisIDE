@@ -1,5 +1,19 @@
 .btn {
-    -fx-background-color: blue;
+    -fx-background-color: #2EB351;
+    -fx-background-radius: 5em;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
+    -fx-max-width: 60px;
+    -fx-max-height: 60px;
+}
+
+.btnVoz {
+    -fx-background-color: #00A6FF;
+    -fx-background-radius: 5em;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
+    -fx-max-width: 60px;
+    -fx-max-height: 60px;
 }
 
 .body {
@@ -7,13 +21,13 @@
 }
 
 .body2 {
-	-fx-background-color: #433C3C;
+	-fx-background-color: #8C9590;
 }
 
 .body3 {
-	-fx-background-color: #574D4D;
+	-fx-background-color: #5A5D63;
 }
 
 .body4 {
-	-fx-background-color: #433C3C;
+	-fx-background-color: #C7D4CD;
 }
