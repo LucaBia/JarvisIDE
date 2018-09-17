@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("screen1.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Jarvis IDE");
         primaryStage.setScene(new Scene(root, 1300, 650));
         primaryStage.show();
     }
