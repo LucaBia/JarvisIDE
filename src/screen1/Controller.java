@@ -1,59 +1,35 @@
 package screen1;
 
+import classes.Algoritmo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Controller {
     @FXML
     private AnchorPane pantallaCodigo;
 
-
     public void grabarButton(ActionEvent e) {
-        System.out.println("Hola");
-        Canvas canvas = new Canvas(200, 150);
+        //Se crea el canvas (area de dibujo)
+        Canvas canvas = new Canvas(900, 570);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        //Se agrega el canvas a la seccion de la pantalla correspondiente
         pantallaCodigo.getChildren().add(canvas);
-        //Scene scene = new Scene(pantallaCodigo, 600, 400, Color.LIGHTGRAY);
-
-        //primaryStage.setScene(scene);
-        // Título que se aparecerá en la ventana
-        //primaryStage.setTitle("Dibujando formas con JavaFX");
-        // Orden para que se muestre la ventana
-        //primaryStage.show();
-
-        /* DIBUJO DE LAS FORMAS */
-
-        /* Se utiliza el objeto gc (GraphicsContext) que se ha obtenido
-            anteriormente a partir del canvas de se ha creado */
-
-        // Dibujo de un rectángulo vacío (strokeRect) que va a ocupar todo
-        //  el espacio del canvas
-        gc.strokeRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        // Cambiar a partir de este momento el color de las líneas a azul
+        //Cambiar el color de las líneas a azul
         gc.setStroke(Color.BLUE);
-        // Cambiar a partir de este momento el grosor de las líneas a 5 puntos
+        //Cambiar el grosor de las líneas
         gc.setLineWidth(5);
-        // Dibujar una línea desde la posición (40,10) a (10,40)
-        gc.strokeLine(40, 10, 10, 40);
-        // Cambiar a partir de este momento el color de relleno a verde
-        gc.setFill(Color.GREEN);
-        // Dibujar un círculo a partir de la posición (10,60) de ancho 30 y alto 30
-        gc.fillOval(10, 60, 30, 30);
-        // Dibujar un círculo sin relleno
-        gc.strokeOval(60, 60, 30, 30);
-        // Dibujar un rectángulo con bordes redondeados a partir de la posición
-        //  (110,60) de ancho 30, alto 30, radio de bordes con ancho 10 y alto 10
-        gc.fillRoundRect(110, 60, 30, 30, 10, 10);
-        // Dibujar un rectángulo vacio
-        gc.strokeRoundRect(160, 60, 30, 30, 10, 10);
+        //Cambiar el color del texto
+        gc.setFill(Color.WHITE);
+        //Cambiar el tamaño y tipo de letra
+        gc.setFont(new Font("BOARD_FONT", 30));
 
-        System.out.println("Hola");
+        Algoritmo.addInicio(gc);
+        gc.drawImage(Algoritmo.createInicio(), 400, 100);
     }
 
 }
