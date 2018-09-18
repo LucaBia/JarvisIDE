@@ -6,5 +6,6 @@
 
 grammar grammar;
 
-public <hello> = ( aatmaa | aarya | rajas | hola);
-
+public <syntax>  = (one | two | three| four| five | six | seven | eight | nine | ten | eleven | twelve | thirteen | fourteen | fifteen | sixteen | seventeen | eighteen | nineteen | twenty) 
+                                                          (plus | minus | multiply | division)                          
+                   (one | two | three| four| five | six | seven | eight | nine | ten | eleven | twelve | thirteen | fourteen | fifteen | sixteen | seventeen | eighteen | nineteen | twenty);
