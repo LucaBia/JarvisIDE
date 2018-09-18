@@ -7,7 +7,7 @@ public class While {
     private List<Accion> acciones;
 
     public void setCondicion(Condicion cond) {
-        //todo
+        this.condicion = cond;
     }
 
     public void addAccion(Accion ac) {

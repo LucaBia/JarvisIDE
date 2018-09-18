@@ -12,17 +12,33 @@ import javafx.scene.text.Text;
 import java.util.List;
 
 public class Algoritmo {
-    private List<Accion> secuencia;
+    private List secuencia;
 
     public void addAccion(Accion ac) {
-        //todo
+        this.secuencia.add(ac);
     }
 
-    public void removeAccion(Accion ac) {
-        //todo
+    public void addIf(If ifNuevo) {
+        this.secuencia.add(ifNuevo);
     }
 
-    public void guardarAlgoritmo(Accion ac) {
+    public void addInput(Input input) {
+        this.secuencia.add(input);
+    }
+
+    public void addPrint(Print print) {
+        this.secuencia.add(print);
+    }
+
+    public void addVariable(Variable var) {
+        this.secuencia.add(var);
+    }
+
+    public void addWhile(While whileNuevo) {
+        this.secuencia.add(whileNuevo);
+    }
+
+    public void guardarAlgoritmo() {
         //todo
     }
 
