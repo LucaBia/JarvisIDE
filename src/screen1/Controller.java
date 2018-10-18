@@ -50,8 +50,8 @@ public class Controller {
         //Cambiar el tamaño y tipo de letra
         gc.setFont(new Font("BOARD_FONT", 30));
 
-        Algoritmo.addInicio(gc);
-        gc.drawImage(Algoritmo.createInicio(), 400, 100);
+        //Algoritmo.addInicio(gc);
+        //gc.drawImage(Algoritmo.createInicio(), 400, 100);
 
 
 
