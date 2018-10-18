@@ -53,8 +53,6 @@ public class Controller {
         //Algoritmo.addInicio(gc);
         //gc.drawImage(Algoritmo.createInicio(), 400, 100);
 
-
-
         //SPEECH RECOGNITION
 
         // Loading Message
