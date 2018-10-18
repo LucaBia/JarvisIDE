@@ -7,6 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sphinx4-core-5prealpha-20160628.232526-10" level="project" />
+    <orderEntry type="library" name="sphinx4-data-5prealpha-20160628.232535-10" level="project" />
+    <orderEntry type="library" name="sphinx4-samples-5prealpha-20160628.232549-9" level="project" />
   </component>
 </module>
-
