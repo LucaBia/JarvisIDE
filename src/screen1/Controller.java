@@ -35,7 +35,7 @@ public class Controller {
     private LiveSpeechRecognizer recognizer;
 
     public void grabarButton(ActionEvent e) throws Exception {
-        /*
+
         //Se crea el canvas (area de dibujo)
         Canvas canvas = new Canvas(900, 570);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -52,7 +52,8 @@ public class Controller {
 
         Algoritmo.addInicio(gc);
         gc.drawImage(Algoritmo.createInicio(), 400, 100);
-        */
+
+
 
         //SPEECH RECOGNITION
 
@@ -79,13 +80,13 @@ public class Controller {
         recognizer.startRecognition(true);
 
         // Inicialización del Thread (proceso de ejecución) para verificar lo dicho
-        startSpeechThread();
+        startSpeechThread(gc);
         // Inicializacion del segundo Thread que verifica que un microfono este disponible
         startResourcesThread();
     }
 
     //Thread que verifica o inicia el reconocimiento vocal (Thread principal)
-    private void startSpeechThread() {
+    private void startSpeechThread(GraphicsContext gc) {
 
         if (speechThread != null && speechThread.isAlive())
             return;
@@ -100,7 +101,7 @@ public class Controller {
                         //Toma como referencia el metodo ya compilado de SpeechResult.java
                         result = speechResult.getHypothesis();
                         System.out.println("Acabas de decir: " + result + "\n");
-                        makeDecision(result);
+                        makeDecision(result, gc);
                     } else
                         logger.log(Level.INFO, "No entendí lo que acabas de decir.\n");
 
@@ -142,13 +143,13 @@ public class Controller {
         resourcesThread.start();
     }
 
-    private void makeDecision(String speech) {
+    private void makeDecision(String speech, GraphicsContext gc) {
         // se divide la oración
         String[] array = speech.split(" ");
 
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
-            inicioDiagrama();
+            inicioDiagrama(gc);
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
@@ -156,9 +157,10 @@ public class Controller {
 
     }
 
-    private void inicioDiagrama() {
+    private void inicioDiagrama(GraphicsContext gc) {
         //Se inicia el diagrama de flujo
 
+        /*
         //Se crea el canvas (area de dibujo)
         Canvas canvas = new Canvas(900, 570);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -172,9 +174,10 @@ public class Controller {
         gc.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
         gc.setFont(new Font("BOARD_FONT", 30));
+        */
 
         Algoritmo.addInicio(gc);
-        gc.drawImage(Algoritmo.createInicio(), 400, 100);
+        //gc.drawImage(Algoritmo.createInicio(), 400, 100);
     }
 
 }

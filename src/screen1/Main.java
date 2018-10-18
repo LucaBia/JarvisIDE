@@ -16,20 +16,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void makeDecision(String speech) {
-        // se divide la oración
-        String[] array = speech.split(" ");
-
-        // Se busca el signo de la operacion matematica
-        if ("start".equals(array[0])) {
-            //Se inicia el diagrama de flujo
-        } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
-            //Se acaba el programa
-            System.exit(0);
-        }
-
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
