@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" styleClass="body" stylesheets="@../stylesheets/styleScreen1.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen1.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" styleClass="body" stylesheets="@../stylesheets/styleScreen1.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen1.Controller">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="80.0" prefWidth="1300.0" styleClass="body2" stylesheets="@../stylesheets/styleScreen1.css">
          <children>
@@ -12,10 +12,10 @@
                <font>
                   <Font name="Avenir Next Condensed Bold" size="29.0" />
                </font></Button>
-            <Button fx:id="grabar" layoutX="1226.0" layoutY="10.0" mnemonicParsing="false" onAction="#grabarButton" prefHeight="60.0" prefWidth="60.0" styleClass="btnVoz" stylesheets="@../stylesheets/styleScreen1.css" text="Button" />
+            <Button fx:id="voice" layoutX="1226.0" layoutY="10.0" mnemonicParsing="false" onAction="#voiceButton" prefHeight="60.0" prefWidth="60.0" styleClass="btnVoz" stylesheets="@../stylesheets/styleScreen1.css" text="Button" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-1.0" layoutY="80.0" prefHeight="300.0" prefWidth="400.0" styleClass="body3" stylesheets="@../stylesheets/styleScreen1.css" />
+      <AnchorPane fx:id="pantallaFunciones" layoutX="-1.0" layoutY="80.0" prefHeight="300.0" prefWidth="400.0" styleClass="body3" stylesheets="@../stylesheets/styleScreen1.css" />
       <AnchorPane layoutX="-1.0" layoutY="380.0" prefHeight="270.0" prefWidth="400.0" styleClass="body4" stylesheets="@../stylesheets/styleScreen1.css" />
       <AnchorPane fx:id="pantallaCodigo" layoutX="399.0" layoutY="80.0" prefHeight="570.0" prefWidth="900.0" />
    </children>

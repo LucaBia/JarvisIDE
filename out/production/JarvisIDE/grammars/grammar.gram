@@ -6,4 +6,4 @@
 
 grammar grammar;
 
-public <syntax>  = (start | finish | block)(you | me | program);
+public <syntax>  = (start | finish)(you | me | program);

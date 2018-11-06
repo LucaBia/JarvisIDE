@@ -22,6 +22,8 @@ import java.util.logging.Logger;
 public class Controller {
     @FXML
     private AnchorPane pantallaCodigo;
+    @FXML
+    private AnchorPane pantallaFunciones;
 
     // Logger
     private Logger logger = Logger.getLogger(getClass().getName());
@@ -34,24 +36,29 @@ public class Controller {
     // LiveRecognizer
     private LiveSpeechRecognizer recognizer;
 
-    public void grabarButton(ActionEvent e) throws Exception {
+    // Canvas
+    private GraphicsContext gcPantallaCodigo;
 
+    public void initialize() {
         //Se crea el canvas (area de dibujo)
         Canvas canvas = new Canvas(900, 570);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gcPantallaCodigo = canvas.getGraphicsContext2D();
         //Se agrega el canvas a la seccion de la pantalla correspondiente
         pantallaCodigo.getChildren().add(canvas);
         //Cambiar el color de las líneas a azul
-        gc.setStroke(Color.BLUE);
+        gcPantallaCodigo.setStroke(Color.BLUE);
         //Cambiar el grosor de las líneas
-        gc.setLineWidth(5);
+        gcPantallaCodigo.setLineWidth(5);
         //Cambiar el color del texto
-        gc.setFill(Color.WHITE);
+        gcPantallaCodigo.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
-        gc.setFont(new Font("BOARD_FONT", 30));
+        gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
 
-        //Algoritmo.addInicio(gc);
-        //gc.drawImage(Algoritmo.createInicio(), 400, 100);
+        //Algoritmo.addInicio(gcPantallaCodigo);
+        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+    }
+
+    public void voiceButton(ActionEvent e) throws Exception {
 
         //SPEECH RECOGNITION
 
@@ -78,7 +85,7 @@ public class Controller {
         recognizer.startRecognition(true);
 
         // Inicialización del Thread (proceso de ejecución) para verificar lo dicho
-        startSpeechThread(gc);
+        startSpeechThread(gcPantallaCodigo);
         // Inicializacion del segundo Thread que verifica que un microfono este disponible
         startResourcesThread();
     }
@@ -157,25 +164,10 @@ public class Controller {
 
     private void inicioDiagrama(GraphicsContext gc) {
         //Se inicia el diagrama de flujo
-
-        /*
-        //Se crea el canvas (area de dibujo)
-        Canvas canvas = new Canvas(900, 570);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        //Se agrega el canvas a la seccion de la pantalla correspondiente
-        pantallaCodigo.getChildren().add(canvas);
-        //Cambiar el color de las líneas a azul
-        gc.setStroke(Color.BLUE);
-        //Cambiar el grosor de las líneas
-        gc.setLineWidth(5);
-        //Cambiar el color del texto
-        gc.setFill(Color.WHITE);
-        //Cambiar el tamaño y tipo de letra
-        gc.setFont(new Font("BOARD_FONT", 30));
-        */
-
         Algoritmo.addInicio(gc);
+        System.out.println("Uenas");
         //gc.drawImage(Algoritmo.createInicio(), 400, 100);
+        System.out.println("Uenas2");
     }
 
 }
