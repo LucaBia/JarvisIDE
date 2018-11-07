@@ -56,7 +56,7 @@ public class Controller {
         gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
 
         //Algoritmo.addInicio(gcPantallaCodigo);
-        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+        gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
     }
 
     public void voiceButton(ActionEvent e) throws Exception {
@@ -163,7 +163,7 @@ public class Controller {
     private void inicioDiagrama() {
         //Se inicia el diagrama de flujo
         Algoritmo.addInicio(gcPantallaCodigo);
-        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+        gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
         //Algoritmo.createInicio2(gcPantallaCodigo);
     }
 
