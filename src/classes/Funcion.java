@@ -2,14 +2,14 @@ package classes;
 
 import java.util.List;
 
-public class Funcion {
+public class Funcion implements Accion {
     private String nombre;
     private List<String> parametros;
     private List secuencia;
     private String retorno;
 
-    public void addAccion(Accion ac) {
-        this.secuencia.add(ac);
+    public void addInstruccion(Instruccion ins) {
+        this.secuencia.add(ins);
     }
 
     public void addIf(If ifNuevo) {
@@ -42,5 +42,10 @@ public class Funcion {
 
     public void setRetorno(String ret) {
         this.retorno = ret;
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 }

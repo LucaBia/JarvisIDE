@@ -2,7 +2,7 @@ package classes;
 
 import java.util.List;
 
-public class If {
+public class If implements Accion {
     private Condicion condicion;
     private List secuenciaTrue;
     private List secuenciaFalse;
@@ -12,8 +12,8 @@ public class If {
     }
 
     //TRUE
-    public void addAccionT(Accion ac) {
-        this.secuenciaTrue.add(ac);
+    public void addInstruccionT(Instruccion ins) {
+        this.secuenciaTrue.add(ins);
     }
 
     public void addIfT(If ifNuevo) {
@@ -37,8 +37,8 @@ public class If {
     }
 
     //FALSE
-    public void addAccionF(Accion ac) {
-        this.secuenciaFalse.add(ac);
+    public void addInstruccionF(Instruccion ins) {
+        this.secuenciaFalse.add(ins);
     }
 
     public void addIfF(If ifNuevo) {
@@ -59,6 +59,11 @@ public class If {
 
     public void addWhileF(While whileNuevo) {
         this.secuenciaFalse.add(whileNuevo);
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 
 }

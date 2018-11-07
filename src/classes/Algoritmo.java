@@ -14,8 +14,8 @@ import java.util.List;
 public class Algoritmo {
     private List secuencia;
 
-    public void addAccion(Accion ac) {
-        this.secuencia.add(ac);
+    public void addInstruccion(Instruccion ins) {
+        this.secuencia.add(ins);
     }
 
     public void addIf(If ifNuevo) {
@@ -37,6 +37,8 @@ public class Algoritmo {
     public void addWhile(While whileNuevo) {
         this.secuencia.add(whileNuevo);
     }
+
+
 
     public void guardarAlgoritmo() {
         //todo
