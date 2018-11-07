@@ -37,11 +37,12 @@ public class Controller {
     private LiveSpeechRecognizer recognizer;
 
     // Canvas
+    private Canvas canvas;
     private GraphicsContext gcPantallaCodigo;
 
     public void initialize() {
         //Se crea el canvas (area de dibujo)
-        Canvas canvas = new Canvas(900, 570);
+        canvas = new Canvas(900, 570);
         gcPantallaCodigo = canvas.getGraphicsContext2D();
         //Se agrega el canvas a la seccion de la pantalla correspondiente
         pantallaCodigo.getChildren().add(canvas);
@@ -59,9 +60,7 @@ public class Controller {
     }
 
     public void voiceButton(ActionEvent e) throws Exception {
-
         //SPEECH RECOGNITION
-
         // Loading Message
         logger.log(Level.INFO, "Cargando...\n");
 
@@ -85,13 +84,13 @@ public class Controller {
         recognizer.startRecognition(true);
 
         // Inicialización del Thread (proceso de ejecución) para verificar lo dicho
-        startSpeechThread(gcPantallaCodigo);
+        startSpeechThread();
         // Inicializacion del segundo Thread que verifica que un microfono este disponible
         startResourcesThread();
     }
 
     //Thread que verifica o inicia el reconocimiento vocal (Thread principal)
-    private void startSpeechThread(GraphicsContext gc) {
+    private void startSpeechThread() {
 
         if (speechThread != null && speechThread.isAlive())
             return;
@@ -106,7 +105,7 @@ public class Controller {
                         //Toma como referencia el metodo ya compilado de SpeechResult.java
                         result = speechResult.getHypothesis();
                         System.out.println("Acabas de decir: " + result + "\n");
-                        makeDecision(result, gc);
+                        makeDecision(result);
                     } else
                         logger.log(Level.INFO, "No entendí lo que acabas de decir.\n");
 
@@ -148,26 +147,24 @@ public class Controller {
         resourcesThread.start();
     }
 
-    private void makeDecision(String speech, GraphicsContext gc) {
+    private void makeDecision(String speech) {
         // se divide la oración
         String[] array = speech.split(" ");
 
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
-            inicioDiagrama(gc);
+            inicioDiagrama();
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
         }
-
     }
 
-    private void inicioDiagrama(GraphicsContext gc) {
+    private void inicioDiagrama() {
         //Se inicia el diagrama de flujo
-        Algoritmo.addInicio(gc);
-        System.out.println("Uenas");
-        //gc.drawImage(Algoritmo.createInicio(), 400, 100);
-        System.out.println("Uenas2");
+        Algoritmo.addInicio(gcPantallaCodigo);
+        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+        //Algoritmo.createInicio2(gcPantallaCodigo);
     }
 
 }
