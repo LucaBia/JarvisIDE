@@ -1,7 +1,6 @@
 package screen1;
 
-import classes.Algoritmo;
-import classes.Modulo;
+import classes.*;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
@@ -91,6 +90,10 @@ public class Controller {
         startResourcesThread();
     }
 
+    private void crearButton(ActionEvent e) {
+        //todo
+    }
+
     //Thread que verifica o inicia el reconocimiento vocal (Thread principal)
     private void startSpeechThread() {
 
@@ -156,8 +159,64 @@ public class Controller {
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
             inicioDiagrama();
-        } else if ("new".equals(array[0]) && ("function".equals(array[1]))) {
-            createFuncion();
+        } else if ("create".equals(array[0])) {
+            if ("function".equals(array[1])) {
+                createFuncion();
+            } else if ("if".equals(array[1])) {
+                createIf();
+            } else if ("input".equals(array[1])) {
+                createInput();
+            } else if ("instruction".equals(array[1])) {
+                createInstruccion();
+            } else if ("print".equals(array[1])) {
+                createPrint();
+            } else if ("var".equals(array[1])) {
+                createVar();
+            } else if ("while".equals(array[1])) {
+                createWhile();
+            }
+        } else if ("add".equals(array[0])) {
+            if ("if".equals(array[1])) {
+                addIf();
+            } else if ("input".equals(array[1])) {
+                addInput();
+            } else if ("instruction".equals(array[1])) {
+                addInstruccion();
+            } else if ("print".equals(array[1])) {
+                addPrint();
+            } else if ("var".equals(array[1])) {
+                addVar();
+            } else if ("while".equals(array[1])) {
+                addWhile();
+            } else if ("in".equals(array[1])) {
+                if ("if".equals(array[2])) {
+                    addInIf();
+                } else if ("input".equals(array[2])) {
+                    addInInput();
+                } else if ("instruction".equals(array[2])) {
+                    addInInstruccion();
+                } else if ("print".equals(array[2])) {
+                    addInPrint();
+                } else if ("var".equals(array[2])) {
+                    addInVar();
+                } else if ("while".equals(array[2])) {
+                    addInWhile();
+                }
+            } else if ("out".equals(array[1])) {
+                if ("if".equals(array[2])) {
+                    addOutIf();
+                } else if ("input".equals(array[2])) {
+                    addOutInput();
+                } else if ("instruction".equals(array[2])) {
+                    addOutInstruccion();
+                } else if ("print".equals(array[2])) {
+                    addOutPrint();
+                } else if ("var".equals(array[2])) {
+                    addOutVar();
+                } else if ("while".equals(array[2])) {
+                    addOutWhile();
+                }
+            }
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
@@ -174,7 +233,153 @@ public class Controller {
     }
 
     private void createFuncion() {
-        //Modulo.addFuncion();
+        Funcion myFunction = new Funcion();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createIf() {
+        If myAcc = new If();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createInput() {
+        Input myAcc = new Input();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createInstruccion() {
+        Instruccion myAcc = new Instruccion();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createPrint() {
+        Print myAcc = new Print();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createVar() {
+        Variable myAcc = new Variable();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void createWhile() {
+        While myAcc = new While();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addIf() {
+        If myAcc = new If();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInput() {
+        Input myAcc = new Input();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInstruccion() {
+        Instruccion myAcc = new Instruccion();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addPrint() {
+        Print myAcc = new Print();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addVar() {
+        Variable myAcc = new Variable();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addWhile() {
+        While myAcc = new While();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInIf() {
+        If myAcc = new If();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInInput() {
+        Input myAcc = new Input();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInInstruccion() {
+        Instruccion myAcc = new Instruccion();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInPrint() {
+        Print myAcc = new Print();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInVar() {
+        Variable myAcc = new Variable();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addInWhile() {
+        While myAcc = new While();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutIf() {
+        If myAcc = new If();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutInput() {
+        Input myAcc = new Input();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutInstruccion() {
+        Instruccion myAcc = new Instruccion();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutPrint() {
+        Print myAcc = new Print();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutVar() {
+        Variable myAcc = new Variable();
+        //todo
+        //se muestra en la pantalla creacion para editarla
+    }
+
+    private void addOutWhile() {
+        While myAcc = new While();
+        //todo
+        //se muestra en la pantalla creacion para editarla
     }
 
 }

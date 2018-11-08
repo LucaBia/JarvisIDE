@@ -6,4 +6,6 @@
 
 grammar grammar;
 
-public <syntax>  = (start | finish)(you | me | program);
+public <syntax>  = (start | finish | create | add)
+(program | function | in | out | if | input | instruction | print | var | while)
+(if | input | instruction | print | var | while);
