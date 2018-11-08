@@ -156,7 +156,7 @@ public class Controller {
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
             inicioDiagrama();
-        } else if ("new".equals(array[0]) && ("function".equals(array[1]))) {
+        } else if ("new".equals(array[0]) && ("function".equals(array[1])) && ("with".equals(array[2]))) {
             createFuncion();
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
