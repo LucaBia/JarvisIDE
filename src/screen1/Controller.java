@@ -1,6 +1,7 @@
 package screen1;
 
 import classes.Algoritmo;
+import classes.Modulo;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
@@ -12,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextFlow;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Port;
@@ -56,7 +58,7 @@ public class Controller {
         gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
 
         //Algoritmo.addInicio(gcPantallaCodigo);
-        gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
     }
 
     public void voiceButton(ActionEvent e) throws Exception {
@@ -154,6 +156,8 @@ public class Controller {
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
             inicioDiagrama();
+        } else if ("new".equals(array[0]) && ("function".equals(array[1]))) {
+            createFuncion();
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
@@ -163,8 +167,14 @@ public class Controller {
     private void inicioDiagrama() {
         //Se inicia el diagrama de flujo
         Algoritmo.addInicio(gcPantallaCodigo);
-        gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
         //Algoritmo.createInicio2(gcPantallaCodigo);
+        TextFlow espacioFunciones = new TextFlow();
+        pantallaFunciones.getChildren().add(espacioFunciones);
+    }
+
+    private void createFuncion() {
+        //Modulo.addFuncion();
     }
 
 }

@@ -3,10 +3,10 @@ package classes;
 import java.util.List;
 
 public class Modulo {
-    private List<Funcion> funciones;
+    static List<Funcion> funciones;
 
-    public void addFuncion(Funcion f) {
-        this.funciones.add(f);
+    public static void addFuncion(Funcion f) {
+        funciones.add(f);
     }
 
     public void removeFuncion(Funcion f) {

@@ -2,35 +2,11 @@ package classes;
 
 import java.util.List;
 
-public class Funcion {
+public class Funcion implements Accion {
     private String nombre;
     private List<String> parametros;
-    private List secuencia;
+    private List<Accion> secuencia;
     private String retorno;
-
-    public void addAccion(Accion ac) {
-        this.secuencia.add(ac);
-    }
-
-    public void addIf(If ifNuevo) {
-        this.secuencia.add(ifNuevo);
-    }
-
-    public void addInput(Input input) {
-        this.secuencia.add(input);
-    }
-
-    public void addPrint(Print print) {
-        this.secuencia.add(print);
-    }
-
-    public void addVariable(Variable var) {
-        this.secuencia.add(var);
-    }
-
-    public void addWhile(While whileNuevo) {
-        this.secuencia.add(whileNuevo);
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -42,5 +18,18 @@ public class Funcion {
 
     public void setRetorno(String ret) {
         this.retorno = ret;
+    }
+
+    public void addAccion(Accion ac) {
+        this.secuencia.add(ac);
+    }
+
+    public void removeAccion(Accion ac) {
+        this.secuencia.remove(ac);
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 }

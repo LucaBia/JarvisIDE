@@ -1,6 +1,6 @@
 package classes;
 
-public class Condicion {
+public class Condicion implements Accion {
     private Variable var1;
     private Variable var2;
     private String OperadorLogico;
@@ -15,5 +15,10 @@ public class Condicion {
 
     public void setOperadorLogico(String operador) {
         this.OperadorLogico = operador;
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 }

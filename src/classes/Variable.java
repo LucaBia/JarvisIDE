@@ -1,6 +1,6 @@
 package classes;
 
-public class Variable {
+public class Variable implements Accion {
     private String nombre;
     private String valor;
     private String tipoDeDato;
@@ -13,5 +13,10 @@ public class Variable {
 
     public String getValor() {
         return this.valor;
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 }
