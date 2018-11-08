@@ -1,6 +1,6 @@
 package classes;
 
-public class Instruccion {
+public class Instruccion implements Accion {
     private String instruccion;
 
     public void setInstruccion(String ins) {
@@ -9,5 +9,10 @@ public class Instruccion {
 
     public String getInstruccion() {
         return this.instruccion;
+    }
+
+    @Override
+    public void escribir() {
+        //todo
     }
 }

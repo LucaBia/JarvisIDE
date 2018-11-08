@@ -4,61 +4,29 @@ import java.util.List;
 
 public class If implements Accion {
     private Condicion condicion;
-    private List secuenciaTrue;
-    private List secuenciaFalse;
+    private List<Accion> secuenciaTrue;
+    private List<Accion> secuenciaFalse;
 
     public void setCondicion(Condicion cond) {
         this.condicion = cond;
     }
 
     //TRUE
-    public void addInstruccionT(Instruccion ins) {
-        this.secuenciaTrue.add(ins);
+    public void addAccionT(Accion ac) {
+        this.secuenciaTrue.add(ac);
     }
 
-    public void addIfT(If ifNuevo) {
-        this.secuenciaTrue.add(ifNuevo);
-    }
-
-    public void addInputT(Input input) {
-        this.secuenciaTrue.add(input);
-    }
-
-    public void addPrintT(Print print) {
-        this.secuenciaTrue.add(print);
-    }
-
-    public void addVariableT(Variable var) {
-        this.secuenciaTrue.add(var);
-    }
-
-    public void addWhileT(While whileNuevo) {
-        this.secuenciaTrue.add(whileNuevo);
+    public void removeAccionT(Accion ac) {
+        this.secuenciaTrue.remove(ac);
     }
 
     //FALSE
-    public void addInstruccionF(Instruccion ins) {
-        this.secuenciaFalse.add(ins);
+    public void addAccionF(Accion ac) {
+        this.secuenciaFalse.add(ac);
     }
 
-    public void addIfF(If ifNuevo) {
-        this.secuenciaFalse.add(ifNuevo);
-    }
-
-    public void addInputF(Input input) {
-        this.secuenciaFalse.add(input);
-    }
-
-    public void addPrintF(Print print) {
-        this.secuenciaFalse.add(print);
-    }
-
-    public void addVariableF(Variable var) {
-        this.secuenciaFalse.add(var);
-    }
-
-    public void addWhileF(While whileNuevo) {
-        this.secuenciaFalse.add(whileNuevo);
+    public void removeAccionF(Accion ac) {
+        this.secuenciaFalse.remove(ac);
     }
 
     @Override
