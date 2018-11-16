@@ -9,6 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,6 +28,8 @@ public class Controller {
     private AnchorPane pantallaCodigo;
     @FXML
     private AnchorPane pantallaFunciones;
+    @FXML
+    private AnchorPane pantallaCreacion;
 
     // Logger
     private Logger logger = Logger.getLogger(getClass().getName());
@@ -238,12 +243,36 @@ public class Controller {
         Funcion myFunction = new Funcion();
         //todo
         //se muestra en la pantalla creacion para editarla
+        pantallaCreacion.getChildren().clear(); //Se limpia el panel por si anteriormente habia algo
+        Label DefTag = new Label("Def");
+        DefTag.setLayoutX(14);
+        DefTag.setLayoutY(60);
+        //Text field para ingresar el nombre de la función
+        TextField nombreTag = new TextField();
+        nombreTag.setLayoutX(63);
+        nombreTag.setLayoutY(55);
+        nombreTag.setPrefWidth(100);
+        //Label parentesis de apertura
+
+
+        pantallaCreacion.getChildren().addAll();
     }
 
     private void createIf() {
         If myAcc = new If();
         //todo
         //se muestra en la pantalla creacion para editarla
+        pantallaCreacion.getChildren().clear();
+        Button miHuevo = new Button("Soy un boton nuevo");
+        miHuevo.setLayoutX(185);
+        miHuevo.setLayoutY(227);
+        TextField pruebaField = new TextField();
+        pruebaField.setPrefWidth(90);
+        pruebaField.setLayoutX(63);
+        pruebaField.setLayoutY(55);
+        javafx.scene.control.Label pruebaLabel2 = new javafx.scene.control.Label("Def");
+        pruebaLabel2.setLayoutY(55);
+        pantallaCreacion.getChildren().addAll(miHuevo, pruebaField, pruebaLabel2);
     }
 
     private void createInput() {
