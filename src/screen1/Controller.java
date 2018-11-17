@@ -61,9 +61,6 @@ public class Controller {
         gcPantallaCodigo.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
         gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
-
-        //Algoritmo.addInicio(gcPantallaCodigo);
-        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
     }
 
     public void voiceButton(ActionEvent e) throws Exception {
@@ -164,7 +161,7 @@ public class Controller {
 
         // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
-            inicioDiagrama();
+            inicioPrograma();
         } else if ("create".equals(array[0])) {
             if ("function".equals(array[1])) {
                 createFuncion();
@@ -231,14 +228,12 @@ public class Controller {
         }
     }
 
-    private void inicioDiagrama() {
-        //Se inicia el diagrama de flujo
-        Algoritmo.addInicio(gcPantallaCodigo);
+    private void inicioPrograma() {
+        //Se inicia el programa
         Platform.runLater(() -> {
+            gcPantallaCodigo.drawImage(Algoritmo.createDibujoInicio(), 400, 5);
             TextFlow espacioFunciones = new TextFlow();
             pantallaFunciones.getChildren().add(espacioFunciones);
-            gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
-            Algoritmo.createInicio2(gcPantallaCodigo);
         });
     }
 
