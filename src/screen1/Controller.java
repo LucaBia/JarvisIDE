@@ -5,6 +5,7 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -233,46 +234,51 @@ public class Controller {
     private void inicioDiagrama() {
         //Se inicia el diagrama de flujo
         Algoritmo.addInicio(gcPantallaCodigo);
-        //gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
-        //Algoritmo.createInicio2(gcPantallaCodigo);
-        TextFlow espacioFunciones = new TextFlow();
-        pantallaFunciones.getChildren().add(espacioFunciones);
+        Platform.runLater(() -> {
+            TextFlow espacioFunciones = new TextFlow();
+            pantallaFunciones.getChildren().add(espacioFunciones);
+            gcPantallaCodigo.drawImage(Algoritmo.createInicio(), 400, 100);
+            Algoritmo.createInicio2(gcPantallaCodigo);
+        });
     }
 
     private void createFuncion() {
         Funcion myFunction = new Funcion();
         //todo
         //se muestra en la pantalla creacion para editarla
-        pantallaCreacion.getChildren().clear(); //Se limpia el panel por si anteriormente habia algo
-        Label DefTag = new Label("Def");
-        DefTag.setLayoutX(14);
-        DefTag.setLayoutY(60);
-        //Text field para ingresar el nombre de la función
-        TextField nombreTag = new TextField();
-        nombreTag.setLayoutX(63);
-        nombreTag.setLayoutY(55);
-        nombreTag.setPrefWidth(100);
-        //Label parentesis de apertura
 
-
-        pantallaCreacion.getChildren().addAll();
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear(); //Se limpia el panel por si anteriormente habia algo
+            Label DefTag = new Label("Def");
+            DefTag.setLayoutX(14);
+            DefTag.setLayoutY(60);
+            //Text field para ingresar el nombre de la función
+            TextField nombreTag = new TextField();
+            nombreTag.setLayoutX(63);
+            nombreTag.setLayoutY(55);
+            nombreTag.setPrefWidth(100);
+            //Label parentesis de apertura
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void createIf() {
         If myAcc = new If();
         //todo
         //se muestra en la pantalla creacion para editarla
-        pantallaCreacion.getChildren().clear();
-        Button miHuevo = new Button("Soy un boton nuevo");
-        miHuevo.setLayoutX(185);
-        miHuevo.setLayoutY(227);
-        TextField pruebaField = new TextField();
-        pruebaField.setPrefWidth(90);
-        pruebaField.setLayoutX(63);
-        pruebaField.setLayoutY(55);
-        javafx.scene.control.Label pruebaLabel2 = new javafx.scene.control.Label("Def");
-        pruebaLabel2.setLayoutY(55);
-        pantallaCreacion.getChildren().addAll(miHuevo, pruebaField, pruebaLabel2);
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            Button miHuevo = new Button("Soy un boton nuevo");
+            miHuevo.setLayoutX(185);
+            miHuevo.setLayoutY(227);
+            TextField pruebaField = new TextField();
+            pruebaField.setPrefWidth(90);
+            pruebaField.setLayoutX(63);
+            pruebaField.setLayoutY(55);
+            javafx.scene.control.Label pruebaLabel2 = new javafx.scene.control.Label("Def");
+            pruebaLabel2.setLayoutY(55);
+            pantallaCreacion.getChildren().addAll(miHuevo, pruebaField, pruebaLabel2);
+        });
     }
 
     private void createInput() {
