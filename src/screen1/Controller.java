@@ -93,10 +93,6 @@ public class Controller {
         startResourcesThread();
     }
 
-    private void crearButton(ActionEvent e) {
-        //todo
-    }
-
     //Thread que verifica o inicia el reconocimiento vocal (Thread principal)
     private void startSpeechThread() {
 
@@ -228,6 +224,10 @@ public class Controller {
         }
     }
 
+    private void crearAccion() {
+        System.out.println("Hola");
+    }
+
     private void inicioPrograma() {
         //Se inicia el programa
         Platform.runLater(() -> {
@@ -239,179 +239,288 @@ public class Controller {
 
     private void createFuncion() {
         Funcion myFunction = new Funcion();
-        //todo
-        //se muestra en la pantalla creacion para editarla
-
+        //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear(); //Se limpia el panel por si anteriormente habia algo
-            Label DefTag = new Label("Def");
-            DefTag.setLayoutX(14);
-            DefTag.setLayoutY(60);
+            //Se limpia el panel por si anteriormente habia algo
+            pantallaCreacion.getChildren().clear();
+            Label defLabel = new Label("def");
+            defLabel.setLayoutX(15);
+            defLabel.setLayoutY(60);
             //Text field para ingresar el nombre de la función
-            TextField nombreTag = new TextField();
-            nombreTag.setLayoutX(63);
-            nombreTag.setLayoutY(55);
-            nombreTag.setPrefWidth(100);
+            TextField nombreTextField = new TextField();
+            nombreTextField.setLayoutX(40);
+            nombreTextField.setLayoutY(60);
+            nombreTextField.setPrefWidth(75);
             //Label parentesis de apertura
-            pantallaCreacion.getChildren().addAll();
+            Label parentesis1Label = new Label("(");
+            parentesis1Label.setLayoutX(125);
+            parentesis1Label.setLayoutY(60);
+            //Text field para ingresar el nombre del parametro
+            TextField par1TextField = new TextField();
+            par1TextField.setLayoutX(130);
+            par1TextField.setLayoutY(60);
+            par1TextField.setPrefWidth(50);
+            //Label coma
+            Label comaLabel = new Label(",");
+            comaLabel.setLayoutX(185);
+            comaLabel.setLayoutY(60);
+            //Text field para ingresar el nombre del parametro
+            TextField par2TextField = new TextField();
+            par2TextField.setLayoutX(190);
+            par2TextField.setLayoutY(60);
+            par2TextField.setPrefWidth(50);
+            //Label parentesis cierre
+            Label parentesis2Label = new Label("):");
+            parentesis2Label.setLayoutX(245);
+            parentesis2Label.setLayoutY(60);
+
+
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            pantallaCreacion.getChildren().addAll(defLabel, nombreTextField, parentesis1Label, par1TextField, comaLabel, par2TextField, parentesis2Label, crearButton);
         });
     }
 
     private void createIf() {
         If myAcc = new If();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            Button miHuevo = new Button("Soy un boton nuevo");
-            miHuevo.setLayoutX(185);
-            miHuevo.setLayoutY(227);
-            TextField pruebaField = new TextField();
-            pruebaField.setPrefWidth(90);
-            pruebaField.setLayoutX(63);
-            pruebaField.setLayoutY(55);
-            javafx.scene.control.Label pruebaLabel2 = new javafx.scene.control.Label("Def");
-            pruebaLabel2.setLayoutY(55);
-            pantallaCreacion.getChildren().addAll(miHuevo, pruebaField, pruebaLabel2);
+            //todo
+            pantallaCreacion.getChildren().addAll();
         });
     }
 
     private void createInput() {
         Input myAcc = new Input();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void createInstruccion() {
         Instruccion myAcc = new Instruccion();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void createPrint() {
         Print myAcc = new Print();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void createVar() {
         Variable myAcc = new Variable();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void createWhile() {
         While myAcc = new While();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addIf() {
         If myAcc = new If();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInput() {
         Input myAcc = new Input();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInstruccion() {
         Instruccion myAcc = new Instruccion();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addPrint() {
         Print myAcc = new Print();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addVar() {
         Variable myAcc = new Variable();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addWhile() {
         While myAcc = new While();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInIf() {
         If myAcc = new If();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInInput() {
         Input myAcc = new Input();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInInstruccion() {
         Instruccion myAcc = new Instruccion();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInPrint() {
         Print myAcc = new Print();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInVar() {
         Variable myAcc = new Variable();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addInWhile() {
         While myAcc = new While();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutIf() {
         If myAcc = new If();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutInput() {
         Input myAcc = new Input();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutInstruccion() {
         Instruccion myAcc = new Instruccion();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutPrint() {
         Print myAcc = new Print();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutVar() {
         Variable myAcc = new Variable();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
     private void addOutWhile() {
         While myAcc = new While();
-        //todo
-        //se muestra en la pantalla creacion para editarla
+        //Se muestra en la pantalla creacion para editarla
+        Platform.runLater(() -> {
+            pantallaCreacion.getChildren().clear();
+            //todo
+            pantallaCreacion.getChildren().addAll();
+        });
     }
 
 }
