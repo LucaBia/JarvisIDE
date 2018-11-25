@@ -7,5 +7,5 @@
 grammar grammar;
 
 public <syntax>  = (start | finish | create | add)
-(program | function | in | out | if | input | instruction | print | var | while)
-(if | input | instruction | print | var | while);
+(program | function | in | out | if | input | instruction | print | variable | while)
+(if | input | instruction | print | variable | while);

@@ -169,10 +169,12 @@ public class Controller {
                 createInstruccion();
             } else if ("print".equals(array[1])) {
                 createPrint();
-            } else if ("var".equals(array[1])) {
+            } else if ("variable".equals(array[1])) {
                 createVar();
             } else if ("while".equals(array[1])) {
                 createWhile();
+            } else {
+                System.out.println("Orden no reconocida");
             }
         } else if ("add".equals(array[0])) {
             if ("if".equals(array[1])) {
@@ -183,7 +185,7 @@ public class Controller {
                 addInstruccion();
             } else if ("print".equals(array[1])) {
                 addPrint();
-            } else if ("var".equals(array[1])) {
+            } else if ("variable".equals(array[1])) {
                 addVar();
             } else if ("while".equals(array[1])) {
                 addWhile();
@@ -196,10 +198,12 @@ public class Controller {
                     addInInstruccion();
                 } else if ("print".equals(array[2])) {
                     addInPrint();
-                } else if ("var".equals(array[2])) {
+                } else if ("variable".equals(array[2])) {
                     addInVar();
                 } else if ("while".equals(array[2])) {
                     addInWhile();
+                } else {
+                    System.out.println("Orden no reconocida");
                 }
             } else if ("out".equals(array[1])) {
                 if ("if".equals(array[2])) {
@@ -210,21 +214,26 @@ public class Controller {
                     addOutInstruccion();
                 } else if ("print".equals(array[2])) {
                     addOutPrint();
-                } else if ("var".equals(array[2])) {
+                } else if ("variable".equals(array[2])) {
                     addOutVar();
                 } else if ("while".equals(array[2])) {
                     addOutWhile();
+                } else {
+                    System.out.println("Orden no reconocida");
                 }
+            } else {
+                System.out.println("Orden no reconocida");
             }
-        } else if ("new".equals(array[0]) && ("function".equals(array[1])) && ("with".equals(array[2]))) {
-            createFuncion();
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
+        } else {
+            System.out.println("Orden no reconocida");
         }
     }
 
     private void crearAccion() {
+        //Se guarda la informacion proporcionada
         System.out.println("Hola");
     }
 
@@ -274,7 +283,6 @@ public class Controller {
             parentesis2Label.setLayoutX(245);
             parentesis2Label.setLayoutY(60);
 
-
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
@@ -288,8 +296,31 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //Label If (
+            Label ifLabel = new Label("if (");
+            ifLabel.setLayoutX(15);
+            ifLabel.setLayoutY(60);
+            //TextField var1
+            TextField var1TextField = new TextField();
+            var1TextField.setLayoutX(35);
+            var1TextField.setLayoutY(60);
+            var1TextField.setPrefWidth(50);
+            //TextFlied Operador logico
+            TextField operadorTextField = new TextField();
+            operadorTextField.setLayoutX(95);
+            operadorTextField.setLayoutY(60);
+            operadorTextField.setPrefWidth(25);
+            //TextField var 2
+            TextField var2TextField = new TextField();
+            var2TextField.setLayoutX(130);
+            var2TextField.setLayoutY(60);
+            var2TextField.setPrefWidth(50);
+            //Label Parentesis
+            Label parentesisLabel = new Label("):");
+            parentesisLabel.setLayoutX(185);
+            parentesisLabel.setLayoutY(60);
+
+            pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel);
         });
     }
 
@@ -298,8 +329,26 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //TextField var
+            TextField varTextField = new TextField();
+            varTextField.setLayoutX(15);
+            varTextField.setLayoutY(60);
+            varTextField.setPrefWidth(50);
+            //Label = input(
+            Label inputLabel = new Label("= input(");
+            inputLabel.setLayoutX(75);
+            inputLabel.setLayoutY(60);
+            //TextField texto a mostrar
+            TextField textoTextField = new TextField();
+            textoTextField.setLayoutX(125);
+            textoTextField.setLayoutY(60);
+            textoTextField.setPrefWidth(150);
+            //Label )
+            Label parentesisLabel = new Label(")");
+            parentesisLabel.setLayoutX(285);
+            parentesisLabel.setLayoutY(60);
+
+            pantallaCreacion.getChildren().addAll(varTextField, inputLabel, textoTextField, parentesisLabel);
         });
     }
 
@@ -308,8 +357,13 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //TextField instruccion
+            TextField insTextField = new TextField();
+            insTextField.setLayoutX(15);
+            insTextField.setLayoutY(60);
+            insTextField.setPrefWidth(300);
+
+            pantallaCreacion.getChildren().addAll(insTextField);
         });
     }
 
@@ -318,8 +372,21 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //Label print(
+            Label printLabel = new Label("print(");
+            printLabel.setLayoutX(15);
+            printLabel.setLayoutY(60);
+            //TextField texto a mostrar
+            TextField textoTextField = new TextField();
+            textoTextField.setLayoutX(50);
+            textoTextField.setLayoutY(60);
+            textoTextField.setPrefWidth(150);
+            //Label )
+            Label parentesisLabel = new Label(")");
+            parentesisLabel.setLayoutX(210);
+            parentesisLabel.setLayoutY(60);
+
+            pantallaCreacion.getChildren().addAll(printLabel, textoTextField, parentesisLabel);
         });
     }
 
@@ -328,8 +395,22 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //TextField var name
+            TextField varTextField = new TextField();
+            varTextField.setLayoutX(15);
+            varTextField.setLayoutY(60);
+            varTextField.setPrefWidth(50);
+            //Label =
+            Label igualLabel = new Label("=");
+            igualLabel.setLayoutX(75);
+            igualLabel.setLayoutY(60);
+            //TextField asignacion
+            TextField asignacionTextField = new TextField();
+            asignacionTextField.setLayoutX(90);
+            asignacionTextField.setLayoutY(60);
+            asignacionTextField.setPrefWidth(200);
+
+            pantallaCreacion.getChildren().addAll(varTextField, igualLabel, asignacionTextField);
         });
     }
 
@@ -338,8 +419,31 @@ public class Controller {
         //Se muestra en la pantalla creacion para editarla
         Platform.runLater(() -> {
             pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
+            //Label While (
+            Label whileLabel = new Label("while (");
+            whileLabel.setLayoutX(15);
+            whileLabel.setLayoutY(60);
+            //TextField var1
+            TextField var1TextField = new TextField();
+            var1TextField.setLayoutX(50);
+            var1TextField.setLayoutY(60);
+            var1TextField.setPrefWidth(50);
+            //TextFlied Operador logico
+            TextField operadorTextField = new TextField();
+            operadorTextField.setLayoutX(110);
+            operadorTextField.setLayoutY(60);
+            operadorTextField.setPrefWidth(25);
+            //TextField var 2
+            TextField var2TextField = new TextField();
+            var2TextField.setLayoutX(145);
+            var2TextField.setLayoutY(60);
+            var2TextField.setPrefWidth(50);
+            //Label Parentesis
+            Label parentesisLabel = new Label("):");
+            parentesisLabel.setLayoutX(200);
+            parentesisLabel.setLayoutY(60);
+
+            pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel);
         });
     }
 
