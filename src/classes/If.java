@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.scene.control.Label;
+
 import java.util.List;
 
 public class If implements Accion {
@@ -30,8 +32,10 @@ public class If implements Accion {
     }
 
     @Override
-    public void escribir() {
+    public Label escribir() {
         //todo
+        Label myLabel = new Label();
+        return myLabel;
     }
 
 }

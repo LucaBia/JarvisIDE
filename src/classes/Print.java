@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.scene.control.Label;
+
 public class Print implements Accion {
     private String texto;
 
@@ -8,7 +10,9 @@ public class Print implements Accion {
     }
 
     @Override
-    public void escribir() {
+    public Label escribir() {
         //todo
+        Label myLabel = new Label();
+        return myLabel;
     }
 }

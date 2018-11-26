@@ -1,7 +1,7 @@
 package classes;
 
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Label;
 
 public interface Accion {
-    void escribir();
+    Label escribir();
 }

@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.scene.control.Label;
+
 import java.util.List;
 
 public class While implements Accion {
@@ -19,7 +21,9 @@ public class While implements Accion {
     }
 
     @Override
-    public void escribir() {
+    public Label escribir() {
         //todo
+        Label myLabel = new Label();
+        return myLabel;
     }
 }

@@ -292,10 +292,9 @@ public class Controller {
         Funcion miFuncion = new Funcion();
         //Le doy la informacion a la funcion
         miFuncion.setNombre(nombreFuncion);
-        miFuncion.addParametro(par1);
-        miFuncion.addParametro(par2);
+        miFuncion.setParametros(par1, par2);
         //Mando a escribir la funcion en el panel correspondiente
-        //miFuncion.escribir(pantallaFunciones);
+        pantallaFunciones.getChildren().add(miFuncion.escribir());
     }
 
     private void createIf() {

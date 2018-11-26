@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.scene.control.Label;
+
 public class Condicion implements Accion {
     private Variable var1;
     private Variable var2;
@@ -18,7 +20,9 @@ public class Condicion implements Accion {
     }
 
     @Override
-    public void escribir() {
+    public Label escribir() {
         //todo
+        Label myLabel = new Label();
+        return myLabel;
     }
 }

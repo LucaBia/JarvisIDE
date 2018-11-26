@@ -1,5 +1,7 @@
 package classes;
 
+import javafx.scene.control.Label;
+
 public class Input implements Accion {
     private String texto;
     private String valorIngreso;
@@ -9,7 +11,9 @@ public class Input implements Accion {
     }
 
     @Override
-    public void escribir() {
+    public Label escribir() {
         //todo
+        Label myLabel = new Label();
+        return myLabel;
     }
 }
