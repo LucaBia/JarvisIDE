@@ -349,13 +349,17 @@ public class Controller {
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearIf());
+            crearButton.setOnAction(click -> crearIf(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText()));
             pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
         });
     }
-    private void crearIf() {
+    private void crearIf(String var1, String oplo, String var2) {
         If myIf = new If();
-        //todo
+        Condicion myCondicion = new Condicion();
+        myCondicion.setVar1(var1);
+        myCondicion.setVar2(var2);
+        myCondicion.setOperadorLogico(oplo);
+        myIf.setCondicion(myCondicion);
         textAlgoritmoList.add(myIf.escribir());
     }
 
@@ -522,16 +526,34 @@ public class Controller {
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearWhile());
+            crearButton.setOnAction(click -> crearWhile(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText()));
             pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
         });
     }
 
-    private void crearWhile() {
+    private void crearWhile(String var1, String oplo, String var2) {
         While myWhile = new While();
-        //todo
+        Condicion myCondicion = new Condicion();
+        myCondicion.setVar1(var1);
+        myCondicion.setVar2(var2);
+        myCondicion.setOperadorLogico(oplo);
+        myWhile.setCondicion(myCondicion);
         textAlgoritmoList.add(myWhile.escribir());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void addIf() {
         If myAcc = new If();

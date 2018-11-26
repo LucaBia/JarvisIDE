@@ -25,7 +25,7 @@ public class While implements Accion {
     @Override
     public Text escribir() {
         //todo
-        Text myText = new Text("\n");
+        Text myText = new Text("\n"+"while "+condicion+":");
         myText.setFont(new Font("Arial", 30));
         myText.setFill(Color.WHITE);
         return myText;

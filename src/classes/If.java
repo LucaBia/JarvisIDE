@@ -36,7 +36,7 @@ public class If implements Accion {
     @Override
     public Text escribir() {
         //todo
-        Text myText = new Text("\n");
+        Text myText = new Text("\n"+"if "+condicion+":");
         myText.setFont(new Font("Arial", 30));
         myText.setFill(Color.WHITE);
         return myText;
