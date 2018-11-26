@@ -1,16 +1,16 @@
 package classes;
 
-import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class Variable implements Accion {
     private String nombre;
     private String valor;
-    private String tipoDeDato;
 
-    public void setValor(String nombreVariable, String valor, String tipoDeDato) {
+    public void setValor(String nombreVariable, String valor) {
         this.nombre = nombreVariable;
         this.valor = valor;
-        this.tipoDeDato = tipoDeDato;
     }
 
     public String getValor() {
@@ -18,9 +18,10 @@ public class Variable implements Accion {
     }
 
     @Override
-    public Label escribir() {
-        //todo
-        Label myLabel = new Label();
-        return myLabel;
+    public Text escribir() {
+        Text myText = new Text("\n"+nombre+" = "+valor);
+        myText.setFont(new Font("Arial", 30));
+        myText.setFill(Color.WHITE);
+        return myText;
     }
 }

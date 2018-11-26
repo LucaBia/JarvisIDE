@@ -1,6 +1,8 @@
 package classes;
 
-import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class Instruccion implements Accion {
     private String instruccion;
@@ -14,9 +16,10 @@ public class Instruccion implements Accion {
     }
 
     @Override
-    public Label escribir() {
-        //todo
-        Label myLabel = new Label();
-        return myLabel;
+    public Text escribir() {
+        Text myText = new Text("\n"+instruccion);
+        myText.setFont(new Font("Arial", 30));
+        myText.setFill(Color.WHITE);
+        return myText;
     }
 }

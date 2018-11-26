@@ -1,8 +1,8 @@
 package classes;
 
-import javafx.application.Platform;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -30,10 +30,12 @@ public class Funcion implements Accion {
     }
 
     @Override
-    public Label escribir() {
+    public Text escribir() {
         //todo
         //Aqui defino como debe escribirse la funcion en el panel
-        Label myLabel = new Label("Def "+nombre+"("+parametro1+","+parametro2+"):");
-        return myLabel;
+        Text myText = new Text("Def "+nombre+"("+parametro1+","+parametro2+")");
+        myText.setFont(new Font("Arial", 30));
+        myText.setFill(Color.WHITE);
+        return myText;
     }
 }

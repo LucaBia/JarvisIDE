@@ -4,7 +4,6 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -44,15 +43,6 @@ public class Algoritmo {
         sPane.getChildren().add(txt);
         SnapshotParameters parameters = new SnapshotParameters();
         parameters.setFill(Color.TRANSPARENT);
-
-        Line l = new Line();
-        l.setStartX(50);
-        l.setStartY(50);
-        l.setEndX(50);
-        l.setEndY(60);
-        l.setStrokeWidth(5);
-        l.setStroke(Color.BLUE);
-        sPane.getChildren().add(l);
 
         return sPane.snapshot(parameters, null);
     }

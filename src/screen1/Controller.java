@@ -5,7 +5,9 @@ import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
 
+import edu.cmu.sphinx.linguist.acoustic.tiedstate.HTK.Lab;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -14,8 +16,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import javax.sound.sampled.AudioSystem;
@@ -28,9 +32,11 @@ public class Controller {
     @FXML
     private AnchorPane pantallaCodigo;
     @FXML
-    private AnchorPane pantallaFunciones;
+    private VBox moduloVBox;
     @FXML
     private AnchorPane pantallaCreacion;
+    @FXML
+    private TextFlow algoritmoTextFlow;
 
     // Logger
     private Logger logger = Logger.getLogger(getClass().getName());
@@ -42,6 +48,10 @@ public class Controller {
 
     // LiveRecognizer
     private LiveSpeechRecognizer recognizer;
+
+    private Algoritmo myAlgoritmo;
+    private Modulo myModulo;
+    private ObservableList textAlgoritmoList;
 
     // Canvas
     private Canvas canvas;
@@ -61,6 +71,10 @@ public class Controller {
         gcPantallaCodigo.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
         gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
+
+        myAlgoritmo = new Algoritmo();
+        myModulo = new Modulo();
+        textAlgoritmoList = algoritmoTextFlow.getChildren();
     }
 
     public void voiceButton(ActionEvent e) throws Exception {
@@ -155,7 +169,6 @@ public class Controller {
         // se divide la oración
         String[] array = speech.split(" ");
 
-        // Se busca el signo de la operacion matematica
         if ("start".equals(array[0])) {
             inicioPrograma();
         } else if ("create".equals(array[0])) {
@@ -236,14 +249,23 @@ public class Controller {
         //Se inicia el programa
         Platform.runLater(() -> {
             gcPantallaCodigo.drawImage(Algoritmo.createDibujoInicio(), 400, 5);
-            TextFlow espacioFunciones = new TextFlow();
-            pantallaFunciones.getChildren().add(espacioFunciones);
+
+            Text startText = new Text("Inicio Programa");
+            startText.setFont(new Font("Arial", 30));
+            startText.setFill(Color.WHITE);
+            textAlgoritmoList.add(startText);
+
+            Label moduloLabel = new Label("          MODULO");
+            moduloLabel.setFont(new Font("Arial", 30));
+            moduloLabel.setTextFill(Color.WHITE);
+            moduloVBox.getChildren().add(moduloLabel);
         });
     }
 
     private void createFuncion() {
         Funcion myFunction = new Funcion();
         //Se muestra en la pantalla creacion para editarla
+
         Platform.runLater(() -> {
             //Se limpia el panel por si anteriormente habia algo
             pantallaCreacion.getChildren().clear();
@@ -288,13 +310,11 @@ public class Controller {
 
     private void crearFuncion(String nombreFuncion, String par1, String par2) {
         //Se guarda la informacion proporcionada
-        System.out.println("Hola");
         Funcion miFuncion = new Funcion();
         //Le doy la informacion a la funcion
         miFuncion.setNombre(nombreFuncion);
         miFuncion.setParametros(par1, par2);
-        //Mando a escribir la funcion en el panel correspondiente
-        pantallaFunciones.getChildren().add(miFuncion.escribir());
+        moduloVBox.getChildren().add(miFuncion.escribir());
     }
 
     private void createIf() {
@@ -325,9 +345,18 @@ public class Controller {
             Label parentesisLabel = new Label("):");
             parentesisLabel.setLayoutX(185);
             parentesisLabel.setLayoutY(60);
-
-            pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearIf());
+            pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
         });
+    }
+    private void crearIf() {
+        If myIf = new If();
+        //todo
+        textAlgoritmoList.add(myIf.escribir());
     }
 
     private void createInput() {
@@ -353,9 +382,20 @@ public class Controller {
             Label parentesisLabel = new Label(")");
             parentesisLabel.setLayoutX(285);
             parentesisLabel.setLayoutY(60);
-
-            pantallaCreacion.getChildren().addAll(varTextField, inputLabel, textoTextField, parentesisLabel);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearInput(varTextField.getText(), textoTextField.getText()));
+            pantallaCreacion.getChildren().addAll(varTextField, inputLabel, textoTextField, parentesisLabel, crearButton);
         });
+    }
+
+    private void crearInput(String var, String txt) {
+        Input myInput = new Input();
+        myInput.setVariable(var);
+        myInput.setTexto(txt);
+        textAlgoritmoList.add(myInput.escribir());
     }
 
     private void createInstruccion() {
@@ -368,9 +408,19 @@ public class Controller {
             insTextField.setLayoutX(15);
             insTextField.setLayoutY(60);
             insTextField.setPrefWidth(300);
-
-            pantallaCreacion.getChildren().addAll(insTextField);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearInstruccion(insTextField.getText()));
+            pantallaCreacion.getChildren().addAll(insTextField, crearButton);
         });
+    }
+
+    private void crearInstruccion(String ins) {
+        Instruccion myIns = new Instruccion();
+        myIns.setInstruccion(ins);
+        textAlgoritmoList.add(myIns.escribir());
     }
 
     private void createPrint() {
@@ -391,9 +441,19 @@ public class Controller {
             Label parentesisLabel = new Label(")");
             parentesisLabel.setLayoutX(210);
             parentesisLabel.setLayoutY(60);
-
-            pantallaCreacion.getChildren().addAll(printLabel, textoTextField, parentesisLabel);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearPrint(textoTextField.getText()));
+            pantallaCreacion.getChildren().addAll(printLabel, textoTextField, parentesisLabel, crearButton);
         });
+    }
+
+    private void crearPrint(String txt) {
+        Print myPrint = new Print();
+        myPrint.setTexto(txt);
+        textAlgoritmoList.add(myPrint.escribir());
     }
 
     private void createVar() {
@@ -415,9 +475,19 @@ public class Controller {
             asignacionTextField.setLayoutX(90);
             asignacionTextField.setLayoutY(60);
             asignacionTextField.setPrefWidth(200);
-
-            pantallaCreacion.getChildren().addAll(varTextField, igualLabel, asignacionTextField);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearVar(varTextField.getText(), asignacionTextField.getText()));
+            pantallaCreacion.getChildren().addAll(varTextField, igualLabel, asignacionTextField, crearButton);
         });
+    }
+
+    private void crearVar(String name, String valor) {
+        Variable myVar = new Variable();
+        myVar.setValor(name, valor);
+        textAlgoritmoList.add(myVar.escribir());
     }
 
     private void createWhile() {
@@ -448,9 +518,19 @@ public class Controller {
             Label parentesisLabel = new Label("):");
             parentesisLabel.setLayoutX(200);
             parentesisLabel.setLayoutY(60);
-
-            pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel);
+            //Button crear
+            Button crearButton = new Button("Crear");
+            crearButton.setLayoutX(150);
+            crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearWhile());
+            pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
         });
+    }
+
+    private void crearWhile() {
+        While myWhile = new While();
+        //todo
+        textAlgoritmoList.add(myWhile.escribir());
     }
 
     private void addIf() {
