@@ -232,11 +232,6 @@ public class Controller {
         }
     }
 
-    private void crearAccion() {
-        //Se guarda la informacion proporcionada
-        System.out.println("Hola");
-    }
-
     private void inicioPrograma() {
         //Se inicia el programa
         Platform.runLater(() -> {
@@ -282,13 +277,25 @@ public class Controller {
             Label parentesis2Label = new Label("):");
             parentesis2Label.setLayoutX(245);
             parentesis2Label.setLayoutY(60);
-
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
+            crearButton.setOnAction(click -> crearFuncion(nombreTextField.getText(), par1TextField.getText(), par2TextField.getText()));
             pantallaCreacion.getChildren().addAll(defLabel, nombreTextField, parentesis1Label, par1TextField, comaLabel, par2TextField, parentesis2Label, crearButton);
         });
+    }
+
+    private void crearFuncion(String nombreFuncion, String par1, String par2) {
+        //Se guarda la informacion proporcionada
+        System.out.println("Hola");
+        Funcion miFuncion = new Funcion();
+        //Le doy la informacion a la funcion
+        miFuncion.setNombre(nombreFuncion);
+        miFuncion.addParametro(par1);
+        miFuncion.addParametro(par2);
+        //Mando a escribir la funcion en el panel correspondiente
+        //miFuncion.escribir(pantallaFunciones);
     }
 
     private void createIf() {

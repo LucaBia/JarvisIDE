@@ -1,23 +1,23 @@
 package classes;
 
+import javafx.application.Platform;
+import javafx.scene.layout.AnchorPane;
+
 import java.util.List;
 
 public class Funcion implements Accion {
     private String nombre;
     private List<String> parametros;
     private List<Accion> secuencia;
-    private String retorno;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     public void addParametro(String par) {
-        this.parametros.add(par);
-    }
-
-    public void setRetorno(String ret) {
-        this.retorno = ret;
+        Platform.runLater(() -> {
+            this.parametros.add(par);
+        });
     }
 
     public void addAccion(Accion ac) {
@@ -31,5 +31,8 @@ public class Funcion implements Accion {
     @Override
     public void escribir() {
         //todo
+        //Aqui defino como debe escribirse la funcion en el panel
+        //Label
+        //ap.getChildren().add()
     }
 }
