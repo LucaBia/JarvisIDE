@@ -29,9 +29,24 @@ public class Funcion implements Accion {
         this.secuencia.remove(ac);
     }
 
+
     @Override
     public Text escribir(String indent) {
-        //Aqui defino como debe escribirse la funcion en el panel
+        //Aqui se define como debe escribirse la funcion en el panel
+        /*Text Def = new Text("Def");
+        Def.setFont(new Font("Arial", 20));
+        Def.setFill(Color.SKYBLUE);
+
+        Text NombreFuncion = new Text(nombre);
+        NombreFuncion.setFont(new Font("Arial", 20));
+        NombreFuncion.setFill(Color.LIGHTGREEN);
+
+        Text Parametros = new Text("("+parametro1+", " + parametro2+")");
+        Parametros.setFont(new Font("Arial", 20));
+        Parametros.setFill(Color.ORANGE);*/
+
+        //Text myText = new Text(Def + NombreFuncion + Parametros);
+
         Text myText = new Text("Def "+nombre+"("+parametro1+","+parametro2+")");
         myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
