@@ -56,12 +56,12 @@ public class Controller {
     private ObservableList textAlgoritmoList;
 
     // Canvas
-    private Canvas canvas;
-    private GraphicsContext gcPantallaCodigo;
+    /*private Canvas canvas;
+    private GraphicsContext gcPantallaCodigo;*/
 
     public void initialize() {
         //Se crea el canvas (area de dibujo)
-        canvas = new Canvas(900, 570);
+        /*canvas = new Canvas(900, 570);
         gcPantallaCodigo = canvas.getGraphicsContext2D();
         //Se agrega el canvas a la seccion de la pantalla correspondiente
         pantallaCodigo.getChildren().add(canvas);
@@ -72,7 +72,7 @@ public class Controller {
         //Cambiar el color del texto
         gcPantallaCodigo.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
-        gcPantallaCodigo.setFont(new Font("BOARD_FONT", 20));
+        gcPantallaCodigo.setFont(new Font("BOARD_FONT", 20));*/
 
         myAlgoritmo = new Algoritmo();
         myModulo = new Modulo();
@@ -203,7 +203,7 @@ public class Controller {
     private void inicioPrograma() {
         //Se inicia el programa
         Platform.runLater(() -> {
-            gcPantallaCodigo.drawImage(Algoritmo.createDibujoInicio(), 400, 5);
+            //gcPantallaCodigo.drawImage(Algoritmo.createDibujoInicio(), 400, 5);
 
             Text startText = new Text("Inicio Programa");
             startText.setFont(new Font("Arial", 25));
