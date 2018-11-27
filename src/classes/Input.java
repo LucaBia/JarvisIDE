@@ -17,10 +17,21 @@ public class Input implements Accion {
     }
 
     @Override
-    public Text escribir() {
-        Text myText = new Text("\n"+variable+" = input("+texto+")");
-        myText.setFont(new Font("Arial", 30));
+    public Text escribir(String indent) {
+        Text myText = new Text();
+        myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
+        switch (indent) {
+            case "In":
+                myText.setText("\n        " + variable + " = input(" + texto + ")");
+                break;
+            case "Out":
+                myText.setText("\n    " + variable + " = input(" + texto + ")");
+                break;
+            default:
+                myText.setText("\n    " + variable + " = input(" + texto + ")");
+                break;
+        }
         return myText;
     }
 }

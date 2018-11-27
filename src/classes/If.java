@@ -34,11 +34,11 @@ public class If implements Accion {
     }
 
     @Override
-    public Text escribir() {
-        //todo
-        Text myText = new Text("\n"+"if "+condicion+":");
-        myText.setFont(new Font("Arial", 30));
+    public Text escribir(String indent) {
+        Text myText = new Text();
+        myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
+        myText.setText("\n    " + "if " + (condicion) + ":");
         return myText;
     }
 

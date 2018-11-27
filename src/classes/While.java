@@ -23,11 +23,12 @@ public class While implements Accion {
     }
 
     @Override
-    public Text escribir() {
+    public Text escribir(String indent) {
         //todo
-        Text myText = new Text("\n"+"while "+condicion+":");
-        myText.setFont(new Font("Arial", 30));
+        Text myText = new Text();
+        myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
+        myText.setText("\n    " + "while " + (condicion) + ":");
         return myText;
     }
 }

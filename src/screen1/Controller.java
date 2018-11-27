@@ -7,12 +7,14 @@ import edu.cmu.sphinx.api.SpeechResult;
 
 import edu.cmu.sphinx.linguist.acoustic.tiedstate.HTK.Lab;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -70,7 +72,7 @@ public class Controller {
         //Cambiar el color del texto
         gcPantallaCodigo.setFill(Color.WHITE);
         //Cambiar el tamaño y tipo de letra
-        gcPantallaCodigo.setFont(new Font("BOARD_FONT", 30));
+        gcPantallaCodigo.setFont(new Font("BOARD_FONT", 20));
 
         myAlgoritmo = new Algoritmo();
         myModulo = new Modulo();
@@ -189,54 +191,7 @@ public class Controller {
             } else {
                 System.out.println("Orden no reconocida");
             }
-        } else if ("add".equals(array[0])) {
-            if ("if".equals(array[1])) {
-                addIf();
-            } else if ("input".equals(array[1])) {
-                addInput();
-            } else if ("instruction".equals(array[1])) {
-                addInstruccion();
-            } else if ("print".equals(array[1])) {
-                addPrint();
-            } else if ("variable".equals(array[1])) {
-                addVar();
-            } else if ("while".equals(array[1])) {
-                addWhile();
-            } else if ("in".equals(array[1])) {
-                if ("if".equals(array[2])) {
-                    addInIf();
-                } else if ("input".equals(array[2])) {
-                    addInInput();
-                } else if ("instruction".equals(array[2])) {
-                    addInInstruccion();
-                } else if ("print".equals(array[2])) {
-                    addInPrint();
-                } else if ("variable".equals(array[2])) {
-                    addInVar();
-                } else if ("while".equals(array[2])) {
-                    addInWhile();
-                } else {
-                    System.out.println("Orden no reconocida");
-                }
-            } else if ("out".equals(array[1])) {
-                if ("if".equals(array[2])) {
-                    addOutIf();
-                } else if ("input".equals(array[2])) {
-                    addOutInput();
-                } else if ("instruction".equals(array[2])) {
-                    addOutInstruccion();
-                } else if ("print".equals(array[2])) {
-                    addOutPrint();
-                } else if ("variable".equals(array[2])) {
-                    addOutVar();
-                } else if ("while".equals(array[2])) {
-                    addOutWhile();
-                } else {
-                    System.out.println("Orden no reconocida");
-                }
-            } else {
-                System.out.println("Orden no reconocida");
-            }
+
         } else if ("finish".equals(array[0]) && ("program".equals(array[1]))) {
             //Se acaba el programa
             System.exit(0);
@@ -251,12 +206,12 @@ public class Controller {
             gcPantallaCodigo.drawImage(Algoritmo.createDibujoInicio(), 400, 5);
 
             Text startText = new Text("Inicio Programa");
-            startText.setFont(new Font("Arial", 30));
+            startText.setFont(new Font("Arial", 25));
             startText.setFill(Color.WHITE);
             textAlgoritmoList.add(startText);
 
             Label moduloLabel = new Label("          MODULO");
-            moduloLabel.setFont(new Font("Arial", 30));
+            moduloLabel.setFont(new Font("Arial", 25));
             moduloLabel.setTextFill(Color.WHITE);
             moduloVBox.getChildren().add(moduloLabel);
         });
@@ -314,7 +269,7 @@ public class Controller {
         //Le doy la informacion a la funcion
         miFuncion.setNombre(nombreFuncion);
         miFuncion.setParametros(par1, par2);
-        moduloVBox.getChildren().add(miFuncion.escribir());
+        moduloVBox.getChildren().add(miFuncion.escribir(""));
     }
 
     private void createIf() {
@@ -353,6 +308,7 @@ public class Controller {
             pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
         });
     }
+
     private void crearIf(String var1, String oplo, String var2) {
         If myIf = new If();
         Condicion myCondicion = new Condicion();
@@ -360,7 +316,7 @@ public class Controller {
         myCondicion.setVar2(var2);
         myCondicion.setOperadorLogico(oplo);
         myIf.setCondicion(myCondicion);
-        textAlgoritmoList.add(myIf.escribir());
+        textAlgoritmoList.add(myIf.escribir(""));
     }
 
     private void createInput() {
@@ -386,20 +342,25 @@ public class Controller {
             Label parentesisLabel = new Label(")");
             parentesisLabel.setLayoutX(285);
             parentesisLabel.setLayoutY(60);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearInput(varTextField.getText(), textoTextField.getText()));
-            pantallaCreacion.getChildren().addAll(varTextField, inputLabel, textoTextField, parentesisLabel, crearButton);
+            crearButton.setOnAction(click -> crearInput(varTextField.getText(), textoTextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(varTextField, inputLabel, textoTextField, parentesisLabel, crearButton, cb);
         });
     }
 
-    private void crearInput(String var, String txt) {
+    private void crearInput(String var, String txt, ChoiceBox cb) {
         Input myInput = new Input();
         myInput.setVariable(var);
         myInput.setTexto(txt);
-        textAlgoritmoList.add(myInput.escribir());
+        textAlgoritmoList.add(myInput.escribir(cb.getValue().toString()));
     }
 
     private void createInstruccion() {
@@ -412,19 +373,24 @@ public class Controller {
             insTextField.setLayoutX(15);
             insTextField.setLayoutY(60);
             insTextField.setPrefWidth(300);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearInstruccion(insTextField.getText()));
-            pantallaCreacion.getChildren().addAll(insTextField, crearButton);
+            crearButton.setOnAction(click -> crearInstruccion(insTextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(insTextField, crearButton, cb);
         });
     }
 
-    private void crearInstruccion(String ins) {
+    private void crearInstruccion(String ins, ChoiceBox cb) {
         Instruccion myIns = new Instruccion();
         myIns.setInstruccion(ins);
-        textAlgoritmoList.add(myIns.escribir());
+        textAlgoritmoList.add(myIns.escribir(cb.getValue().toString()));
     }
 
     private void createPrint() {
@@ -445,19 +411,24 @@ public class Controller {
             Label parentesisLabel = new Label(")");
             parentesisLabel.setLayoutX(210);
             parentesisLabel.setLayoutY(60);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearPrint(textoTextField.getText()));
-            pantallaCreacion.getChildren().addAll(printLabel, textoTextField, parentesisLabel, crearButton);
+            crearButton.setOnAction(click -> crearPrint(textoTextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(printLabel, textoTextField, parentesisLabel, crearButton, cb);
         });
     }
 
-    private void crearPrint(String txt) {
+    private void crearPrint(String txt, ChoiceBox cb) {
         Print myPrint = new Print();
         myPrint.setTexto(txt);
-        textAlgoritmoList.add(myPrint.escribir());
+        textAlgoritmoList.add(myPrint.escribir(cb.getValue().toString()));
     }
 
     private void createVar() {
@@ -479,19 +450,24 @@ public class Controller {
             asignacionTextField.setLayoutX(90);
             asignacionTextField.setLayoutY(60);
             asignacionTextField.setPrefWidth(200);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearVar(varTextField.getText(), asignacionTextField.getText()));
-            pantallaCreacion.getChildren().addAll(varTextField, igualLabel, asignacionTextField, crearButton);
+            crearButton.setOnAction(click -> crearVar(varTextField.getText(), asignacionTextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(varTextField, igualLabel, asignacionTextField, crearButton, cb);
         });
     }
 
-    private void crearVar(String name, String valor) {
+    private void crearVar(String name, String valor, ChoiceBox cb) {
         Variable myVar = new Variable();
         myVar.setValor(name, valor);
-        textAlgoritmoList.add(myVar.escribir());
+        textAlgoritmoList.add(myVar.escribir(cb.getValue().toString()));
     }
 
     private void createWhile() {
@@ -538,201 +514,6 @@ public class Controller {
         myCondicion.setVar2(var2);
         myCondicion.setOperadorLogico(oplo);
         myWhile.setCondicion(myCondicion);
-        textAlgoritmoList.add(myWhile.escribir());
+        textAlgoritmoList.add(myWhile.escribir(""));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private void addIf() {
-        If myAcc = new If();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInput() {
-        Input myAcc = new Input();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInstruccion() {
-        Instruccion myAcc = new Instruccion();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addPrint() {
-        Print myAcc = new Print();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addVar() {
-        Variable myAcc = new Variable();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addWhile() {
-        While myAcc = new While();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInIf() {
-        If myAcc = new If();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInInput() {
-        Input myAcc = new Input();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInInstruccion() {
-        Instruccion myAcc = new Instruccion();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInPrint() {
-        Print myAcc = new Print();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInVar() {
-        Variable myAcc = new Variable();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addInWhile() {
-        While myAcc = new While();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutIf() {
-        If myAcc = new If();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutInput() {
-        Input myAcc = new Input();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutInstruccion() {
-        Instruccion myAcc = new Instruccion();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutPrint() {
-        Print myAcc = new Print();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutVar() {
-        Variable myAcc = new Variable();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
-    private void addOutWhile() {
-        While myAcc = new While();
-        //Se muestra en la pantalla creacion para editarla
-        Platform.runLater(() -> {
-            pantallaCreacion.getChildren().clear();
-            //todo
-            pantallaCreacion.getChildren().addAll();
-        });
-    }
-
 }

@@ -1,10 +1,6 @@
 package classes;
 
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-
-public class Condicion implements Accion {
+public class Condicion {
     private String var1;
     private String var2;
     private String operadorLogico;
@@ -22,11 +18,7 @@ public class Condicion implements Accion {
     }
 
     @Override
-    public Text escribir() {
-        //todo
-        Text myText = new Text("("+var1+" "+operadorLogico+" "+var2+")");
-        myText.setFont(new Font("Arial", 30));
-        myText.setFill(Color.WHITE);
-        return myText;
+    public String toString() {
+        return "("+var1+" "+operadorLogico+" "+var2+")";
     }
 }

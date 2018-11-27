@@ -6,6 +6,5 @@
 
 grammar grammar;
 
-public <syntax>  = (start | finish | create | add)
-(program | function | in | out | if | input | instruction | print | variable | while)
-(if | input | instruction | print | variable | while);
+public <syntax>  = (start | finish | create)
+(program | function | if | input | instruction | print | variable | while);

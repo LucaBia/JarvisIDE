@@ -30,11 +30,10 @@ public class Funcion implements Accion {
     }
 
     @Override
-    public Text escribir() {
-        //todo
+    public Text escribir(String indent) {
         //Aqui defino como debe escribirse la funcion en el panel
         Text myText = new Text("Def "+nombre+"("+parametro1+","+parametro2+")");
-        myText.setFont(new Font("Arial", 30));
+        myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
         return myText;
     }
