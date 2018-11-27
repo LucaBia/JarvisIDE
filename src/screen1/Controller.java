@@ -133,7 +133,6 @@ public class Controller {
                         //Toma como referencia el metodo ya compilado de SpeechResult.java
                         result = speechResult.getHypothesis();
                         System.out.println("Acabas de decir: " + result + "\n");
-                        labelVoice.setText(result);
                         makeDecision(result);
                     } else
                         logger.log(Level.INFO, "No entendí lo que acabas de decir.\n");
