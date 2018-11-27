@@ -28,7 +28,17 @@ public class While implements Accion {
         Text myText = new Text();
         myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
-        myText.setText("\n    " + "while " + (condicion) + ":");
+        switch (indent) {
+            case "In":
+                myText.setText("\n    " + "while " + (condicion) + ":");
+                break;
+            case "Out":
+                myText.setText("\n    " + "while " + (condicion) + ":");
+                break;
+            default:
+                myText.setText("\n    " + "while " + (condicion) + ":");
+                break;
+        }
         return myText;
     }
 }

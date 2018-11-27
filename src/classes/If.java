@@ -38,7 +38,17 @@ public class If implements Accion {
         Text myText = new Text();
         myText.setFont(new Font("Arial", 20));
         myText.setFill(Color.WHITE);
-        myText.setText("\n    " + "if " + (condicion) + ":");
+        switch (indent) {
+            case "In":
+                myText.setText("\n    " + "if " + (condicion) + ":");
+                break;
+            case "Out":
+                myText.setText("\n    " + "if " + (condicion) + ":");
+                break;
+            default:
+                myText.setText("\n    " + "if " + (condicion) + ":");
+                break;
+        }
         return myText;
     }
 

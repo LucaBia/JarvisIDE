@@ -300,23 +300,28 @@ public class Controller {
             Label parentesisLabel = new Label("):");
             parentesisLabel.setLayoutX(185);
             parentesisLabel.setLayoutY(60);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearIf(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText()));
-            pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
+            crearButton.setOnAction(click -> crearIf(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(ifLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton, cb);
         });
     }
 
-    private void crearIf(String var1, String oplo, String var2) {
+    private void crearIf(String var1, String oplo, String var2, ChoiceBox cb) {
         If myIf = new If();
         Condicion myCondicion = new Condicion();
         myCondicion.setVar1(var1);
         myCondicion.setVar2(var2);
         myCondicion.setOperadorLogico(oplo);
         myIf.setCondicion(myCondicion);
-        textAlgoritmoList.add(myIf.escribir(""));
+        textAlgoritmoList.add(myIf.escribir(cb.getValue().toString()));
     }
 
     private void createInput() {
@@ -498,22 +503,27 @@ public class Controller {
             Label parentesisLabel = new Label("):");
             parentesisLabel.setLayoutX(200);
             parentesisLabel.setLayoutY(60);
+            //ChoiceBox indentacion
+            ChoiceBox cb = new ChoiceBox();
+            cb.setItems(FXCollections.observableArrayList("Nothing", "In", "Out"));
+            cb.setLayoutX(50);
+            cb.setLayoutY(100);
             //Button crear
             Button crearButton = new Button("Crear");
             crearButton.setLayoutX(150);
             crearButton.setLayoutY(100);
-            crearButton.setOnAction(click -> crearWhile(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText()));
-            pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton);
+            crearButton.setOnAction(click -> crearWhile(var1TextField.getText(), operadorTextField.getText(), var2TextField.getText(), cb));
+            pantallaCreacion.getChildren().addAll(whileLabel, var1TextField, operadorTextField, var2TextField, parentesisLabel, crearButton, cb);
         });
     }
 
-    private void crearWhile(String var1, String oplo, String var2) {
+    private void crearWhile(String var1, String oplo, String var2, ChoiceBox cb) {
         While myWhile = new While();
         Condicion myCondicion = new Condicion();
         myCondicion.setVar1(var1);
         myCondicion.setVar2(var2);
         myCondicion.setOperadorLogico(oplo);
         myWhile.setCondicion(myCondicion);
-        textAlgoritmoList.add(myWhile.escribir(""));
+        textAlgoritmoList.add(myWhile.escribir(cb.getValue().toString()));
     }
 }
