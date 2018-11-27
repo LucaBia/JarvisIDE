@@ -11,6 +11,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -23,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Port;
@@ -530,5 +534,27 @@ public class Controller {
         myCondicion.setOperadorLogico(oplo);
         myWhile.setCondicion(myCondicion);
         textAlgoritmoList.add(myWhile.escribir(cb.getValue().toString()));
+    }
+
+
+    public void abrirVentanaInstrucciones(ActionEvent event){
+        Parent root;
+        try {
+
+            // Cargar la nueva ventana
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("instructions.fxml"));
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Guía Jarvis IDE");
+            stage.setScene(new Scene(root, 747, 406));
+
+            // Muestra la ventana
+            stage.show();
+            // Hide this current window (if this is what you want)
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

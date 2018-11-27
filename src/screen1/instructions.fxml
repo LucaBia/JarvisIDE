@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="406.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen2.Controller">
+   <children>
+      <Label layoutX="256.0" layoutY="14.0" text="Instrucciones">
+         <font>
+            <Font name="AdobeDevanagari-Bold" size="37.0" />
+         </font>
+      </Label>
+      <Text layoutX="15.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jarvis IDE es un programa que te ayuda a programar creando la sintaxis que desees con solo decir los siguientes comandos (Luego de presionar el boton azul):" wrappingWidth="726.2060546875" />
+      <Text layoutX="15.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Antes de mencionar lo que quieres crear, se debe mencionar la palabra &quot;CREATE&quot;" textAlignment="CENTER" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ejemplo: &quot;Create Function&quot;" textAlignment="CENTER" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Function" textAlignment="CENTER" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - If" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - Input" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - Instruction" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - Print" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - Variable" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                                                                           - While" wrappingWidth="726.2060546875">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luego de decir un comando, la sintaxis aparecerá en el cuadro inferior izquierdo, en donde tienes que llenar los espacios en blanco según tu requerimiento. En la lista desplegable debes seleccionar en donde quieres crear el nuevo elemento, si lo quieres agregar adentro de ese mismo elemento o afuera y si fuera el caso en ninguno. Luego al presionar el botón enviar, las instrucciones se enviaran a los paneles principales, al panel funcione o utilidadades (panel superior izquierdo) y al panel de flujo (panel central). Luego de decir una instrucción puedes seguir diciendo instrucciones para crear el programa que desees." textAlignment="JUSTIFY" wrappingWidth="726.2060546875" />
+   </children>
+</AnchorPane>

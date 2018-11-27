@@ -11,6 +11,7 @@ public class Funcion implements Accion {
     private String parametro1;
     private String parametro2;
     private List<Accion> secuencia;
+    //private List<Text> instruccion;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -36,16 +37,19 @@ public class Funcion implements Accion {
         /*Text Def = new Text("Def");
         Def.setFont(new Font("Arial", 20));
         Def.setFill(Color.SKYBLUE);
+        //instruccion.add(Def);
 
         Text NombreFuncion = new Text(nombre);
         NombreFuncion.setFont(new Font("Arial", 20));
         NombreFuncion.setFill(Color.LIGHTGREEN);
+        //instruccion.add(NombreFuncion);
 
         Text Parametros = new Text("("+parametro1+", " + parametro2+")");
         Parametros.setFont(new Font("Arial", 20));
-        Parametros.setFill(Color.ORANGE);*/
+        Parametros.setFill(Color.ORANGE);
+        //instruccion.add(Parametros);
 
-        //Text myText = new Text(Def + NombreFuncion + Parametros);
+        Text myText = new Text(Def. + NombreFuncion + Parametros);*/
 
         Text myText = new Text("Def "+nombre+"("+parametro1+","+parametro2+")");
         myText.setFont(new Font("Arial", 20));
